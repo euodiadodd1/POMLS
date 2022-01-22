@@ -29,18 +29,18 @@ for i in trange(10):
     idx = mnist.target==str(i)
     mnist_data.append(mnist.data[idx])
 
-print("\nNumb samples of each label:\n", [len(v) for v in mnist_data])
+#print("\nNumb samples of each label:\n", [len(v) for v in mnist_data])
 users_lables = []
 
-print("idx",idx)
+#print("idx",idx)
 # devide for label for each users:
 for user in trange(NUM_USERS):
     for j in range(NUM_LABELS):  # 4 labels for each users
         l = (user * NUM_USERS + j) % 10
         users_lables.append(l)
 unique, counts = np.unique(users_lables, return_counts=True)
-print("--------------")
-print(unique, counts)
+# print("--------------")
+# print(unique, counts)
 
 def ram_dom_gen(total, size):
     print(total)
@@ -51,7 +51,7 @@ def ram_dom_gen(total, size):
         temp.append(val)
         total -= val
     temp.append(total)
-    print(temp)
+    #print(temp)
     return temp
 number_sample = []
 for total_value, count in zip(mnist_data, counts):
@@ -106,6 +106,7 @@ for i in range(NUM_USERS):
     num_samples = len(X[i])
     train_len = int(0.75*num_samples)
     test_len = num_samples - train_len
+    
     
     train_data['users'].append(uname) 
     train_data['user_data'][uname] = {'x': X[i][:train_len], 'y': y[i][:train_len]}
